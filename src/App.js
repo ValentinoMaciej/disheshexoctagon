@@ -4,7 +4,7 @@ import { DishForm } from "./components/DishForm/DishForm";
 
 class App extends React.Component {
   submit = (values) => {
-    alert("submitted");
+    alert("Dish has been submitted to our sever");
     console.log(values);
   };
   render() {
