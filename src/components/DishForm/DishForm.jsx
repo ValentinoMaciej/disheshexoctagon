@@ -64,6 +64,8 @@ const validate = (values) => {
     errors.slices_of_bread = "Required";
   } else if (values.slices_of_bread < 2) {
     errors.slices_of_bread = "Minimum 2 slices of bread";
+  } else if (values.slices_of_bread > 50) {
+    errors.slices_of_bread = "Maximum 50 slices of bread";
   }
   return errors;
 };
