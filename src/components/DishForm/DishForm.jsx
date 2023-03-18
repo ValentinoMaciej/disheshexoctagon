@@ -45,23 +45,25 @@ const validate = (values) => {
   }
   if (!values.no_of_slices) {
     errors.no_of_slices = "Required";
-  } else if (values.no_of_slices.length < 1) {
-    errors.no_of_slices = "Minimum be 1 characters or more";
+  } else if (values.no_of_slices < 2) {
+    errors.no_of_slices = "Minimum 2 slices";
   }
   if (!values.diameter) {
     errors.diameter = "Required";
-  } else if (values.diameter.length < 1) {
-    errors.diameter = "Minimum be 1 characters or more";
+  } else if (values.diameter < 25) {
+    errors.diameter = "Diameter must be 25cm or higher";
+  } else if (values.diameter > 75) {
+    errors.diameter = "Diameter must be 75cm or less";
   }
   if (!values.spiciness_scale) {
     errors.spiciness_scale = "Required";
-  } else if (values.spiciness_scale.length < 1) {
-    errors.spiciness_scale = "Minimum be 1 characters or more";
+  } else if (values.spiciness_scale < 1) {
+    errors.spiciness_scale = "Minimum 1 on spiciness scale";
   }
   if (!values.slices_of_bread) {
     errors.slices_of_bread = "Required";
-  } else if (values.slices_of_bread.length < 1) {
-    errors.slices_of_bread = "Minimum be 1 characters or more";
+  } else if (values.slices_of_bread < 2) {
+    errors.slices_of_bread = "Minimum 2 slices of bread";
   }
   return errors;
 };
@@ -121,8 +123,6 @@ export let DishForm = (props) => {
             id="diameter"
             name="diameter"
             step="0.01"
-            min="25"
-            max="75"
             component={renderField}
             required
           />
