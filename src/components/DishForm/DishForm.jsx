@@ -5,6 +5,9 @@ const renderField = ({
   input,
   label,
   type,
+  step,
+  min,
+  max,
   meta: { touched, error, warning },
 }) => (
   <div>
@@ -14,6 +17,9 @@ const renderField = ({
         {...input}
         placeholder={label}
         type={type}
+        step={step}
+        min={min}
+        max={max}
         className="form-control"
       />
       {touched &&
@@ -30,15 +36,32 @@ const validate = (values) => {
   } else if (values.name.length < 2) {
     errors.firstName = "Minimum be 2 characters or more";
   }
-  if (!values.time) {
-    errors.time = "Required";
-  } else if (!/^\d+:\d+$/.test(values.time)) {
-    errors.time = "Please Add Time";
+  if (!values.preparation_time) {
+    errors.preparation_time = "Required";
+  } else if (
+    !/^([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/.test(values.preparation_time)
+  ) {
+    errors.preparation_time = "Please Add Time";
   }
-  if (!values.number) {
-    errors.number = "Required";
-  } else if (values.number.length < 2) {
-    errors.number = "Minimum be 2 characters or more";
+  if (!values.no_of_slices) {
+    errors.no_of_slices = "Required";
+  } else if (values.no_of_slices.length < 1) {
+    errors.no_of_slices = "Minimum be 1 characters or more";
+  }
+  if (!values.diameter) {
+    errors.diameter = "Required";
+  } else if (values.diameter.length < 1) {
+    errors.diameter = "Minimum be 1 characters or more";
+  }
+  if (!values.spiciness_scale) {
+    errors.spiciness_scale = "Required";
+  } else if (values.spiciness_scale.length < 1) {
+    errors.spiciness_scale = "Minimum be 1 characters or more";
+  }
+  if (!values.slices_of_bread) {
+    errors.slices_of_bread = "Required";
+  } else if (values.slices_of_bread.length < 1) {
+    errors.slices_of_bread = "Minimum be 1 characters or more";
   }
   return errors;
 };
@@ -98,6 +121,8 @@ export let DishForm = (props) => {
             id="diameter"
             name="diameter"
             step="0.01"
+            min="25"
+            max="75"
             component={renderField}
             required
           />

@@ -10,7 +10,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <h3 className="jumbotron">Redux Form Validation</h3>
+        <h3 className="jumbotron">Dish Order</h3>
         <DishForm onSubmit={this.submit} />
       </div>
     );
