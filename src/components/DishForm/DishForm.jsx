@@ -72,10 +72,11 @@ const validate = (values) => {
 
 export let DishForm = (props) => {
   const { handleSubmit, pristine, submitting } = props;
+
   return (
     <form onSubmit={handleSubmit} id="dish-form">
       <div>
-        <label for="name">Dish name:</label>
+        <label htmlFor="name">Dish name:</label>
         <Field
           type="text"
           id="name"
@@ -84,8 +85,9 @@ export let DishForm = (props) => {
           required
         />
       </div>
+
       <div>
-        <label for="preparation_time">Preparation time:</label>
+        <label htmlFor="preparation_time">Preparation time:</label>
         <Field
           type="time"
           id="preparation_time"
@@ -96,7 +98,7 @@ export let DishForm = (props) => {
         />
       </div>
       <div>
-        <label for="type">Dish type:</label>
+        <label htmlFor="type">Dish type:</label>
         <select id="type" name="type" required>
           <option value="" disabled selected>
             Select a dish type
@@ -106,9 +108,9 @@ export let DishForm = (props) => {
           <option value="sandwich">Sandwich</option>
         </select>
       </div>
-      <div id="pizza-fields" class="hidden">
+      <div id="pizza-fields" className="hidden">
         <div>
-          <label for="no_of_slices"># of slices:</label>
+          <label htmlFor="no_of_slices"># of slices:</label>
           <Field
             type="number"
             id="no_of_slices"
@@ -119,7 +121,7 @@ export let DishForm = (props) => {
           />
         </div>
         <div>
-          <label for="diameter">Diameter:</label>
+          <label htmlFor="diameter">Diameter:</label>
           <Field
             type="number"
             id="diameter"
@@ -130,9 +132,9 @@ export let DishForm = (props) => {
           />
         </div>
       </div>
-      <div id="soup-fields" class="hidden">
+      <div id="soup-fields" className="hidden">
         <div>
-          <label for="spiciness_scale">Spiciness scale (1-10):</label>
+          <label htmlFor="spiciness_scale">Spiciness scale (1-10):</label>
           <Field
             type="number"
             id="spiciness_scale"
@@ -144,9 +146,9 @@ export let DishForm = (props) => {
           />
         </div>
       </div>
-      <div id="sandwich-fields" class="hidden">
+      <div id="sandwich-fields" className="hidden">
         <div>
-          <label for="slices_of_bread"># of slices of bread:</label>
+          <label htmlFor="slices_of_bread"># of slices of bread:</label>
           <Field
             type="number"
             id="slices_of_bread"
