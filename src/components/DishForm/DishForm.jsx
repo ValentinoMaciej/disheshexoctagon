@@ -1,5 +1,7 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
+import axios from "axios";
+import styles from "./DishForm.module.css";
 
 const renderField = ({
   input,
@@ -11,7 +13,7 @@ const renderField = ({
   meta: { touched, error, warning },
 }) => (
   <div>
-    <label className="control-label">{label}</label>
+    <label className={styles.controlLabel}>{label}</label>
     <div>
       <input
         {...input}
@@ -20,11 +22,11 @@ const renderField = ({
         step={step}
         min={min}
         max={max}
-        className="form-control"
+        className={styles.formControl}
       />
       {touched &&
-        ((error && <span className="text-danger">{error}</span>) ||
-          (warning && <span>{warning}</span>))}
+        ((error && <span className={styles.error}>{error}</span>) ||
+          (warning && <span className={styles.warning}>{warning}</span>))}
     </div>
   </div>
 );
@@ -73,8 +75,28 @@ const validate = (values) => {
 export let DishForm = (props) => {
   const { handleSubmit, pristine, submitting } = props;
 
+  const APIurl =
+    "https://1umzzcc503l.execute-api.us-west-2.amazonaws.com/dishes";
+
+  const submit = async (values) => {
+    try {
+      const response = await axios.post(APIurl, JSON.stringify(values), {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
-    <form onSubmit={handleSubmit} id="dish-form">
+    <form
+      onSubmit={handleSubmit(submit)}
+      id="dish-form"
+      className={styles.dishForm}
+    >
       <div>
         <label htmlFor="name">Dish name:</label>
         <Field
@@ -108,7 +130,7 @@ export let DishForm = (props) => {
           <option value="sandwich">Sandwich</option>
         </select>
       </div>
-      <div id="pizza-fields" className="hidden">
+      <div id="pizza-fields">
         <div>
           <label htmlFor="no_of_slices"># of slices:</label>
           <Field
@@ -132,7 +154,7 @@ export let DishForm = (props) => {
           />
         </div>
       </div>
-      <div id="soup-fields" className="hidden">
+      <div id="soup-fields">
         <div>
           <label htmlFor="spiciness_scale">Spiciness scale (1-10):</label>
           <Field
@@ -146,7 +168,7 @@ export let DishForm = (props) => {
           />
         </div>
       </div>
-      <div id="sandwich-fields" className="hidden">
+      <div id="sandwich-fields">
         <div>
           <label htmlFor="slices_of_bread"># of slices of bread:</label>
           <Field
