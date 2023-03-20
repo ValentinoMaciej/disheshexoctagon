@@ -78,13 +78,27 @@ export let DishForm = (props) => {
   const { handleSubmit, pristine, submitting } = props;
   const dishTypeSelector = formValueSelector("dish-form");
   const dishType = useSelector((state) => dishTypeSelector(state, "type"));
-
   const APIurl =
     "https://1umzzcc503l.execute-api.us-west-2.amazonaws.com/dishes";
 
   const submit = async (values) => {
     try {
-      const response = await axios.post(APIurl, JSON.stringify(values), {
+      let formattedData = {
+        name: values.name,
+        preparation_time: values.preparation_time,
+        type: values.type,
+      };
+
+      if (values.type === "pizza") {
+        formattedData.no_of_slices = values.no_of_slices;
+        formattedData.diameter = values.diameter;
+      } else if (values.type === "soup") {
+        formattedData.spiciness_scale = values.spiciness_scale;
+      } else if (values.type === "sandwich") {
+        formattedData.slices_of_bread = values.slices_of_bread;
+      }
+
+      const response = await axios.post(APIurl, JSON.stringify(formattedData), {
         headers: {
           "Content-Type": "application/json",
         },
