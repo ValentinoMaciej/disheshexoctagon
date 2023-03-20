@@ -98,12 +98,22 @@ export let DishForm = (props) => {
         formattedData.slices_of_bread = values.slices_of_bread;
       }
 
-      const response = await axios.post(APIurl, JSON.stringify(formattedData), {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      console.log(response);
+      await axios
+        .post(APIurl, JSON.stringify(formattedData), {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((response) => {
+          if (response.status === 200) {
+            console.log("POST request was successful:", response.data);
+          } else {
+            console.log("POST request failed with status:", response.status);
+          }
+        })
+        .catch((error) => {
+          console.error("POST request error:", error);
+        });
     } catch (error) {
       console.error(error);
     }
