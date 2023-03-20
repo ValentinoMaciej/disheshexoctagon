@@ -136,7 +136,7 @@ export let DishForm = (props) => {
         />
       </div>
 
-      <div>
+      <div className={styles.prepTime}>
         <label htmlFor="preparation_time">Preparation time:</label>
         <Field
           type="time"
