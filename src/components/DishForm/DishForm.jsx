@@ -2,6 +2,8 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 import styles from "./DishForm.module.css";
 import axios from "axios";
+import { useSelector } from "react-redux";
+import { formValueSelector } from "redux-form";
 
 const renderField = ({
   input,
@@ -74,6 +76,8 @@ const validate = (values) => {
 
 export let DishForm = (props) => {
   const { handleSubmit, pristine, submitting } = props;
+  const dishTypeSelector = formValueSelector("dish-form");
+  const dishType = useSelector((state) => dishTypeSelector(state, "type"));
 
   const APIurl =
     "https://1umzzcc503l.execute-api.us-west-2.amazonaws.com/dishes";
@@ -121,66 +125,73 @@ export let DishForm = (props) => {
       </div>
       <div>
         <label htmlFor="type">Dish type:</label>
-        <select id="type" name="type" required>
+        <Field name="type" id="type" component="select" required>
           <option value="" disabled selected>
             Select a dish type
           </option>
           <option value="pizza">Pizza</option>
           <option value="soup">Soup</option>
           <option value="sandwich">Sandwich</option>
-        </select>
+        </Field>
       </div>
-      <div id="pizza-fields">
-        <div>
-          <label htmlFor="no_of_slices"># of slices:</label>
-          <Field
-            type="number"
-            id="no_of_slices"
-            name="no_of_slices"
-            min="1"
-            component={renderField}
-            required
-          />
+      {dishType === "pizza" && (
+        <div id="pizza-fields">
+          <div>
+            <label htmlFor="no_of_slices"># of slices:</label>
+            <Field
+              type="number"
+              id="no_of_slices"
+              name="no_of_slices"
+              min="1"
+              component={renderField}
+              required
+            />
+          </div>
+
+          <div>
+            <label htmlFor="diameter">Diameter:</label>
+            <Field
+              type="number"
+              id="diameter"
+              name="diameter"
+              step="0.01"
+              component={renderField}
+              required
+            />
+          </div>
         </div>
-        <div>
-          <label htmlFor="diameter">Diameter:</label>
-          <Field
-            type="number"
-            id="diameter"
-            name="diameter"
-            step="0.01"
-            component={renderField}
-            required
-          />
+      )}
+      {dishType === "soup" && (
+        <div id="soup-fields">
+          <div>
+            <label htmlFor="spiciness_scale">Spiciness scale (1-10):</label>
+            <Field
+              type="number"
+              id="spiciness_scale"
+              name="spiciness_scale"
+              min="1"
+              max="10"
+              component={renderField}
+              required
+            />
+          </div>
         </div>
-      </div>
-      <div id="soup-fields">
-        <div>
-          <label htmlFor="spiciness_scale">Spiciness scale (1-10):</label>
-          <Field
-            type="number"
-            id="spiciness_scale"
-            name="spiciness_scale"
-            min="1"
-            max="10"
-            component={renderField}
-            required
-          />
+      )}
+      {dishType === "sandwich" && (
+        <div id="sandwich-fields">
+          <div>
+            <label htmlFor="slices_of_bread"># of slices of bread:</label>
+            <Field
+              type="number"
+              id="slices_of_bread"
+              name="slices_of_bread"
+              min="1"
+              component={renderField}
+              required
+            />
+          </div>
         </div>
-      </div>
-      <div id="sandwich-fields">
-        <div>
-          <label htmlFor="slices_of_bread"># of slices of bread:</label>
-          <Field
-            type="number"
-            id="slices_of_bread"
-            name="slices_of_bread"
-            min="1"
-            component={renderField}
-            required
-          />
-        </div>
-      </div>
+      )}
       <div>
         <button type="submit" disabled={pristine || submitting}>
           Submit
