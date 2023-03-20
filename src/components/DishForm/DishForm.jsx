@@ -79,7 +79,7 @@ export let DishForm = (props) => {
   const dishTypeSelector = formValueSelector("dish-form");
   const dishType = useSelector((state) => dishTypeSelector(state, "type"));
   const APIurl =
-    "https://1umzzcc503l.execute-api.us-west-2.amazonaws.com/dishes";
+    "https://umzzcc503l.execute-api.us-west-2.amazonaws.com/dishes";
 
   const submit = async (values) => {
     try {
