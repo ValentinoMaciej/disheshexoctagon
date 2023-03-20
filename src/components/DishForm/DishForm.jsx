@@ -81,7 +81,7 @@ export let DishForm = (props) => {
   const APIurl =
     "https://umzzcc503l.execute-api.us-west-2.amazonaws.com/dishes";
 
-  const submit = async (values) => {
+  const submitAPI = async (values) => {
     try {
       let formattedData = {
         name: values.name,
@@ -121,7 +121,7 @@ export let DishForm = (props) => {
 
   return (
     <form
-      onSubmit={handleSubmit(submit)}
+      onSubmit={handleSubmit(submitAPI)}
       id="dish-form"
       className={styles.dishForm}
     >

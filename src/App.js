@@ -4,13 +4,13 @@ import { DishForm } from "./components/DishForm/DishForm";
 
 class App extends React.Component {
   submit = (values) => {
-    alert("Dish has been submitted to our sever");
+    alert("Dish has been submitted to our server");
     console.log(values);
   };
   render() {
     return (
       <div className="container">
-        <h3 className="jumbotron">Dish Order</h3>
+        <h3 className="mainTitle">Dish Order</h3>
         <DishForm onSubmit={this.submit} />
       </div>
     );
