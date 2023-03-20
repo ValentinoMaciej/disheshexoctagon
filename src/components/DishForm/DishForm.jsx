@@ -74,17 +74,16 @@ const validate = (values) => {
 export let DishForm = (props) => {
   const { handleSubmit, pristine, submitting } = props;
 
+  const APIurl =
+    "https://1umzzcc503l.execute-api.us-west-2.amazonaws.com/dishes";
+
   const submit = async (values) => {
     try {
-      const response = await axios.post(
-        "https://1umzzcc503l.execute-api.us-west-2.amazonaws.com/dishes",
-        JSON.stringify(values),
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await axios.post(APIurl, JSON.stringify(values), {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       console.log(response);
     } catch (error) {
       console.error(error);
