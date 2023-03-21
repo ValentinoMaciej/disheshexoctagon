@@ -10,7 +10,7 @@ class App extends React.Component {
   render() {
     return (
       <div className={styles.container}>
-        <h3>Dish Order</h3>
+        <h2 className={styles.header}>Dish Maker</h2>
         <DishForm onSubmit={this.submit} />
       </div>
     );
