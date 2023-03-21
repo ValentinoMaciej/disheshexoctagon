@@ -75,7 +75,7 @@ const validate = (values) => {
 };
 
 export let DishForm = (props) => {
-  const { handleSubmit, pristine, submitting } = props;
+  const { handleSubmit, pristine, submitting, onSubmit } = props;
   const dishTypeSelector = formValueSelector("dish-form");
   const dishType = useSelector((state) => dishTypeSelector(state, "type"));
   const APIurl =
@@ -107,6 +107,7 @@ export let DishForm = (props) => {
         .then((response) => {
           if (response.status === 200) {
             console.log("POST request was successful:", response.data);
+            onSubmit(values);
           } else {
             console.log("POST request failed with status:", response.status);
           }
@@ -126,30 +127,44 @@ export let DishForm = (props) => {
       className={styles.dishForm}
     >
       <div>
-        <label htmlFor="name">Dish name:</label>
+        <label htmlFor="name" className={styles.labels}>
+          Dish name:
+        </label>
         <Field
           type="text"
           id="name"
           name="name"
           component={renderField}
+          className={styles.fields}
           required
         />
       </div>
 
       <div className={styles.prepTime}>
-        <label htmlFor="preparation_time">Preparation time:</label>
+        <label htmlFor="preparation_time" className={styles.labels}>
+          Preparation time:
+        </label>
         <Field
           type="time"
           id="preparation_time"
           name="preparation_time"
           step="1"
           component={renderField}
+          className={styles.prepTimeField}
           required
         />
       </div>
       <div>
-        <label htmlFor="type">Dish type:</label>
-        <Field name="type" id="type" component="select" required>
+        <label htmlFor="type" className={styles.labels}>
+          Dish type:
+        </label>
+        <Field
+          name="type"
+          id="type"
+          component="select"
+          className={styles.options}
+          required
+        >
           <option value="" disabled selected>
             Select a dish type
           </option>
@@ -161,25 +176,31 @@ export let DishForm = (props) => {
       {dishType === "pizza" && (
         <div id="pizza-fields">
           <div>
-            <label htmlFor="no_of_slices"># of slices:</label>
+            <label htmlFor="no_of_slices" className={styles.labels}>
+              # of slices:
+            </label>
             <Field
               type="number"
               id="no_of_slices"
               name="no_of_slices"
               min="1"
               component={renderField}
+              className={styles.fields}
               required
             />
           </div>
 
           <div>
-            <label htmlFor="diameter">Diameter:</label>
+            <label htmlFor="diameter" className={styles.labels}>
+              Diameter:
+            </label>
             <Field
               type="number"
               id="diameter"
               name="diameter"
               step="0.01"
               component={renderField}
+              className={styles.fields}
               required
             />
           </div>
@@ -188,7 +209,9 @@ export let DishForm = (props) => {
       {dishType === "soup" && (
         <div id="soup-fields">
           <div>
-            <label htmlFor="spiciness_scale">Spiciness scale (1-10):</label>
+            <label htmlFor="spiciness_scale" className={styles.labels}>
+              Spiciness scale (1-10):
+            </label>
             <Field
               type="number"
               id="spiciness_scale"
@@ -196,6 +219,7 @@ export let DishForm = (props) => {
               min="1"
               max="10"
               component={renderField}
+              className={styles.fields}
               required
             />
           </div>
@@ -204,13 +228,16 @@ export let DishForm = (props) => {
       {dishType === "sandwich" && (
         <div id="sandwich-fields">
           <div>
-            <label htmlFor="slices_of_bread"># of slices of bread:</label>
+            <label htmlFor="slices_of_bread" className={styles.labels}>
+              # of slices of bread:
+            </label>
             <Field
               type="number"
               id="slices_of_bread"
               name="slices_of_bread"
               min="1"
               component={renderField}
+              className={styles.fields}
               required
             />
           </div>

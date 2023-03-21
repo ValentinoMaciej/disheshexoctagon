@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import styles from "./App.module.css";
 import { DishForm } from "./components/DishForm/DishForm";
 
 class App extends React.Component {
@@ -9,8 +9,8 @@ class App extends React.Component {
   };
   render() {
     return (
-      <div className="container">
-        <h3 className="mainTitle">Dish Order</h3>
+      <div className={styles.container}>
+        <h3>Dish Order</h3>
         <DishForm onSubmit={this.submit} />
       </div>
     );
