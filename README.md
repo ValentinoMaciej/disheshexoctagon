@@ -61,5 +61,5 @@ If you have any questions or concerns, feel free to reach out to me:
 
 Name: Maciej Walentynowicz<br>
 GitHub: https://github.com/ValentinoMaciej<br>
-Linkedin: https://www.linkedin.com/in/maciej-walentynowicz/
+Linkedin: https://www.linkedin.com/in/maciej-walentynowicz/<br>
 Link to project: https://github.com/ValentinoMaciej/disheshexoctagon
