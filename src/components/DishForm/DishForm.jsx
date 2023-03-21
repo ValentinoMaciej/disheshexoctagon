@@ -243,7 +243,7 @@ export let DishForm = (props) => {
           </div>
         </div>
       )}
-      <div>
+      <div className={styles.buttonContainer}>
         <button type="submit" disabled={pristine || submitting}>
           Submit
         </button>
