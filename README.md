@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# My Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The project is created for the need to get a job and also to continue learning and digging into the problems we encounter in programming.
+The aim of the project was to create a form which, depending on the options selected, displays the relevant fields to be entered
+so that you can "create" a meal, finally data should be submitted via POST request as a JSON to
+https://umzzcc503l.execute-api.us-west-2.amazonaws.com/dishes/ and the form should support returned validation errors (if any)."
 
-## Available Scripts
+The project was created using ReactJS, and the following libraries were installed:
 
-In the project directory, you can run:
+npx create-react-app (project developed on this basis)
+redux
+react-redux
+redux-form
+axios
 
-### `npm start`
+Below I show which versions of node.js and npm I have worked in:
+node v16.17.0
+npm v8.15.0
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Prerequisites
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Before you begin, ensure you have met the following requirements:
 
-### `npm test`
+* You have installed Node.js (version 16.17.0 or later)
+* You have installed npm (version 8.15.0 or later)
+* You have a compatible browser for testing (e.g., Google Chrome, Mozilla Firefox)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Setting Up the Project
 
-### `npm run build`
+<div>To set up the project, follow these steps:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository to your local machine:<br>
+<b>"open your console"<br>
+    1. Press the Windows key + R to open the Run dialog box.<br>
+    2. Type "cmd" in the text box and press Enter or click on "OK." This will open the Command Prompt.<br>
+    3. write "git clone https://github.com/ValentinoMaciej/disheshexoctagon.git"</b>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Navigate to the project directory:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<b>cd disheshexoctagon</b>
 
-### `npm run eject`
+3. Install the required npm packages:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<b>npm install</b>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. To run the project in development mode, use the following command:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<b>npm start</b>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+This will start the development server, and you can access the application at http://localhost:PORT (replace PORT with the appropriate port number used in your project).
 
-## Learn More
+OR
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<b>You can use this link on Netlify:</b>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+https://walentynowicz-dish-maker.netlify.app/
 
-### Code Splitting
+## Contact
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+If you have any questions or concerns, feel free to reach out to me:
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Name: Maciej Walentynowicz<br>
+GitHub: https://github.com/ValentinoMaciej<br>
+Linkedin: https://www.linkedin.com/in/maciej-walentynowicz/
